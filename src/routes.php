@@ -17,4 +17,16 @@ return function (App $app) {
     
     // Mpesa Callback route (must match the URL defined in your .env)
     $app->post('/api/v1/payment-hook', [MpesaResponseController::class, 'handleCallBack']);
+
+    //Mpesa c2b routes
+    $app->post('/api/v1/c2b/confirmation',[MpesaController::class,'confirmation']);
+
+    $app->post('/api/v1/c2b/validation',[MpesaController::class,'validation']);
+
+    $app->post('/api/v1/c2b/simulate',[MpesaController::class,'simulate']);
+
+    $app->post('/api/v1/c2b/registerUrls',[MpesaController::class,'registerUrls']);
+
+
+
 };
